@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &681468663
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 681468664}
+  m_Layer: 0
+  m_Name: ShootPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &681468664
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681468663}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.6, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2091937115}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2091937114
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,6 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2091937115}
   - component: {fileID: 2091937116}
+  - component: {fileID: 8342723292264846251}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -27,7 +58,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.01, y: -0.133, z: 0}
   m_LocalScale: {x: 0.8, y: 0.2, z: 0.5}
-  m_Children: []
+  m_Children:
+  - {fileID: 681468664}
   m_Father: {fileID: 8342723291169635483}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -82,6 +114,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8342723292264846251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091937114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1f3deba6e36f14499784cc67f68bb79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _joystick: {fileID: 0}
+  _bulletPrefab: {fileID: 2964753002903347333, guid: a476bb0d750c7704d9996f904eec8608, type: 3}
 --- !u!1 &8342723291169635462
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,7 +238,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.3, y: 0.3}
   m_EdgeRadius: 0
 --- !u!50 &1129967409
 Rigidbody2D:
@@ -227,9 +273,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94155a43a62d39f469563ee59f2fad68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveJoystick: {fileID: 0}
-  _weaponJoystick: {fileID: 0}
-  _rigidbody: {fileID: 1129967409}
-  _spriteRenderer: {fileID: 8342723291169635480}
-  _weaponTransform: {fileID: 2091937115}
+  _joystick: {fileID: 0}
   _moveSpeed: 5
