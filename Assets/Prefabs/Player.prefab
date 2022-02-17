@@ -126,8 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f3deba6e36f14499784cc67f68bb79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _config: {fileID: 11400000, guid: eedb69ebf51b1d844b0c8357803d44a1, type: 2}
   _joystick: {fileID: 0}
-  _bulletPrefab: {fileID: 2964753002903347333, guid: a476bb0d750c7704d9996f904eec8608, type: 3}
 --- !u!1 &8342723291169635462
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,7 +221,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8342723291169635462}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -238,7 +238,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.3}
+  m_Size: {x: 0.1, y: 0.1}
   m_EdgeRadius: 0
 --- !u!50 &1129967409
 Rigidbody2D:
@@ -273,5 +273,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94155a43a62d39f469563ee59f2fad68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _config: {fileID: 11400000, guid: dafe8dc0224040d48a2d124a0125df15, type: 2}
   _joystick: {fileID: 0}
-  _moveSpeed: 5
