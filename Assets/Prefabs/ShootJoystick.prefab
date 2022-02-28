@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2929252283123773937}
   - component: {fileID: 5098104872347276090}
   m_Layer: 5
-  m_Name: Joystick
+  m_Name: ShootJoystick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

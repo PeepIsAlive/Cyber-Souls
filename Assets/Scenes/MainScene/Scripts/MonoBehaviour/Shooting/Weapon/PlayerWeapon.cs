@@ -1,19 +1,16 @@
+using System;
 using UnityEngine;
 
 public class PlayerWeapon : Weapon
 {
     [SerializeField] private Joystick _joystick;
     private Transform _shootPoint;
-    private SpriteRenderer _spriteRenderer;
 
     private float _delayAfterShot = 10f;
 
     private void OnEnable()
     {
         _shootPoint = GetComponentInChildren<Transform>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-
-        OnStart();
     }
 
     private void FixedUpdate()
@@ -24,21 +21,30 @@ public class PlayerWeapon : Weapon
 
     private void Shoot()
     {
+        if (!_shootPoint || !_joystick) { return; }
+
         if (_joystick.IsPressed)
         {
-            if (_delayAfterShot >= MaxDelayAfterShot)
+            if (_delayAfterShot >= Config.MaxDelayAfterShot)
             {
-                Instantiate(BulletPrefab, _shootPoint.position, Quaternion.Euler(0, 0, RotateZ));
+                Instantiate(Config.BulletPrefab, _shootPoint.position, Quaternion.Euler(0, 0, RotateZ));
 
                 _delayAfterShot = 0;
             }
         }
 
-        _delayAfterShot += Time.fixedDeltaTime;
+        try
+        {
+            _delayAfterShot = checked(_delayAfterShot + Time.fixedDeltaTime);
+        }
+        catch (OverflowException) { _delayAfterShot = Config.MaxDelayAfterShot; }
+        
     }
 
     protected virtual void Rotate()
     {
-        transform.rotation = base.Rotate(_spriteRenderer, _joystick.X, _joystick.Y);
+        if (!_joystick) { return; }
+
+        transform.rotation = base.Rotate(_joystick.X, _joystick.Y);
     }
 }
