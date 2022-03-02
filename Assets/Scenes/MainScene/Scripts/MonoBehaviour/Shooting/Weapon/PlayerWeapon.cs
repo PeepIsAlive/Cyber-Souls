@@ -3,14 +3,16 @@ using UnityEngine;
 
 public class PlayerWeapon : Weapon
 {
-    [SerializeField] private Joystick _joystick;
-    private Transform _shootPoint;
+    public Joystick Joystick;
+    [SerializeField] private Transform _shootPoint;
+    private SpriteRenderer _renderer;
 
     private float _delayAfterShot = 10f;
 
     private void OnEnable()
     {
-        _shootPoint = GetComponentInChildren<Transform>();
+        _renderer = GetComponent<SpriteRenderer>();
+        // shootPoint
     }
 
     private void FixedUpdate()
@@ -21,9 +23,9 @@ public class PlayerWeapon : Weapon
 
     private void Shoot()
     {
-        if (!_shootPoint || !_joystick) { return; }
+        if (!_shootPoint || !Joystick) { return; }
 
-        if (_joystick.IsPressed)
+        if (Joystick.IsPressed)
         {
             if (_delayAfterShot >= Config.MaxDelayAfterShot)
             {
@@ -43,8 +45,13 @@ public class PlayerWeapon : Weapon
 
     protected virtual void Rotate()
     {
-        if (!_joystick) { return; }
+        if (!Joystick || !_renderer) { return; }
 
-        transform.rotation = base.Rotate(_joystick.X, _joystick.Y);
+        if (Joystick.IsPressed)
+        {
+            if (_renderer.flipX == true) { _renderer.flipX = false; }
+        }
+
+        transform.rotation = base.Rotate(Joystick.X, Joystick.Y);
     }
 }

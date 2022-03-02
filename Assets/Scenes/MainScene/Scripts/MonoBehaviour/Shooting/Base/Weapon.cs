@@ -11,6 +11,6 @@ public class Weapon : MonoBehaviour
     {
         RotateZ = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
 
-        return Quaternion.Euler(0, 0, RotateZ);
+        return Quaternion.Euler((RotateZ > 90 || RotateZ < -90) ? 180 : 0, 0, (RotateZ > 90 || RotateZ < -90) ? -RotateZ : RotateZ);
     }
 }

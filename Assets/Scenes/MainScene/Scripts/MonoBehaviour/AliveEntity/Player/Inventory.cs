@@ -1,18 +1,16 @@
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.Events;
 
 [System.Serializable]
 public class InventoryItemSlot
 {
-    #region ::Init field::
     private ItemConfig _item;
     private int _amount = 0;
-    #endregion
 
-    #region ::Properties::
     public ItemConfig Item => _item;
     public int Amount { get => _amount; set { if (value > 0) _amount = value; } }
-    #endregion
 
     public InventoryItemSlot(ItemConfig item)
     {
@@ -24,13 +22,9 @@ public class InventoryItemSlot
 [System.Serializable]
 public class InventoryWeaponSlot
 {
-    #region ::Init field::
     public WeaponConfig _weapon;
-    #endregion
 
-    #region ::Properties::
     public WeaponConfig Weapon { get => _weapon; set { _weapon = value; } }
-    #endregion
 
     public InventoryWeaponSlot(WeaponConfig weapon)
     {
@@ -40,14 +34,30 @@ public class InventoryWeaponSlot
 
 public class Inventory : MonoBehaviour
 {
-    #region ::Init field::
+    [SerializeField] private Image _imageWeapon;
     [SerializeField] private List<InventoryItemSlot> _inventoryItems = new List<InventoryItemSlot>();
     [SerializeField] private List<InventoryWeaponSlot> _inventoryWeapons = new List<InventoryWeaponSlot>();
-    [SerializeField] private Transform _dropPointTransform;
+    private Transform _weaponPosition;
+    private Transform _dropPointTransform;
 
-    private const int _sizeInventoryItems = 10;
-    private const int _sizeInventoryWeapons = 3;
-    #endregion
+    private const int _sizeInventoryItems = 3;
+    private const int _sizeInventoryWeapons = 1;
+    [HideInInspector] public UnityEvent<SpriteRenderer> OnEquipWeaponEvent;
+
+    public int CurrentIndexWeapon { get; private set; }
+
+    public Inventory(List<InventoryWeaponSlot> weapons) => _inventoryWeapons = weapons;
+    public GameObject this[int index]
+    {
+        get => _inventoryWeapons[index].Weapon.Prefab;
+    }
+
+    private void OnEnable()
+    {
+        _weaponPosition = transform.GetChild(0);
+        _dropPointTransform = transform.GetChild(1);
+        CurrentIndexWeapon = 0;
+    }
 
     public void AddItem(ItemConfig item)
     {
@@ -67,10 +77,12 @@ public class Inventory : MonoBehaviour
     {
         WeaponConfig previousWeapon = null;
 
-        if (_inventoryItems.Count == _sizeInventoryWeapons)
+        if (_inventoryWeapons.Count == _sizeInventoryWeapons)
         {
-            previousWeapon = _inventoryWeapons[2].Weapon;
-            _inventoryWeapons[2].Weapon = weapon;
+            previousWeapon = _inventoryWeapons[CurrentIndexWeapon].Weapon;
+            _inventoryWeapons[CurrentIndexWeapon].Weapon = weapon;
+
+            EquipWeapon(weapon);
         }
 
         if (previousWeapon != null)
@@ -82,9 +94,18 @@ public class Inventory : MonoBehaviour
         if (_inventoryWeapons.Count < _sizeInventoryWeapons) _inventoryWeapons.Add(new InventoryWeaponSlot(weapon));
     }
 
-    public void DropWeapon(ref WeaponConfig weapon)
+    private void EquipWeapon(WeaponConfig weapon)
     {
-        Instantiate(weapon.WeaponPrefab, _dropPointTransform.position, Quaternion.identity);
+        GameObject weaponObj = Instantiate(weapon.Prefab, _weaponPosition);
+        weaponObj.GetComponent<PlayerWeapon>().Joystick = PlayerController.Instance.ShootJoystick;
+
+        OnEquipWeaponEvent?.Invoke(weaponObj.GetComponent<SpriteRenderer>());
+    }
+
+    private void DropWeapon(ref WeaponConfig weapon)
+    {
+        Destroy(_weaponPosition.GetChild(0).gameObject);
+        Instantiate(weapon.Prefab, _dropPointTransform.position, Quaternion.identity);
         weapon = null;
     }
 }

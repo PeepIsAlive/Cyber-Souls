@@ -261,8 +261,8 @@ GameObject:
   m_Component:
   - component: {fileID: 387531102}
   - component: {fileID: 387531101}
-  - component: {fileID: 387531100}
   - component: {fileID: 387531103}
+  - component: {fileID: 387531100}
   m_Layer: 15
   m_Name: Square (1)
   m_TagString: Enemy
@@ -1052,7 +1052,7 @@ PrefabInstance:
     - target: {fileID: 4103098042521651856, guid: 879501d61d2b5884f80fb8a1f23b28cf,
         type: 3}
       propertyPath: m_Name
-      value: DefaultGun
+      value: DefaultInPlaceGun
       objectReference: {fileID: 0}
     - target: {fileID: 4103098042521651857, guid: 879501d61d2b5884f80fb8a1f23b28cf,
         type: 3}
@@ -1182,7 +1182,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
     type: 3}
-  m_Color: {r: 0.64317375, g: 0.8584906, b: 0.5790762, a: 1}
+  m_Color: {r: 0.3852218, g: 0.5471698, b: 0.33810964, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1480,10 +1480,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 689875660, guid: 5940f5d0f1be83549b684b705db1818f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 689875662, guid: 5940f5d0f1be83549b684b705db1818f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1714,7 +1710,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8342723292264846251, guid: 1df8d587891216c45aaa6be6526feb49,
         type: 3}
-      propertyPath: _joystick
+      propertyPath: Joystick
       value: 
       objectReference: {fileID: 4042357230193605587}
     m_RemovedComponents: []
