@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b1c96b2036cbd14eaed2e5eb0379182, type: 3}
-  m_Name: DefaultBullet
+  m_Name: RiffleMoiraBullet
   m_EditorClassIdentifier: 
-  _damage: 10
-  _critChance: 10
-  _flightSpeed: 8.5
-  _force: 0.5
+  _damage: 7
+  _critChance: 5
+  _flightSpeed: 10
+  _force: 0

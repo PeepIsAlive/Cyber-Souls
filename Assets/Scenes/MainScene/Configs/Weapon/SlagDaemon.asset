@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2356da0720802d748b491c41a7d426b8, type: 3}
-  m_Name: DefaultGun
+  m_Name: SlagDaemon
   m_EditorClassIdentifier: 
-  _id: 0
-  _name: DefaultGun
-  _sprite: {fileID: 21300000, guid: 73773640b411cdf488ae0919f804b0e9, type: 3}
-  _prefab: {fileID: 4103098042521651856, guid: 879501d61d2b5884f80fb8a1f23b28cf, type: 3}
-  _bulletPrefab: {fileID: 2964753002903347333, guid: a476bb0d750c7704d9996f904eec8608,
+  _id: 1
+  _name: Slag Daemon
+  _sprite: {fileID: 21300000, guid: 94d39876daf16e446b7b51c05e61c986, type: 3}
+  _prefab: {fileID: 2380775216163550392, guid: fa60a79fc75b4fd4f87f448272837796, type: 3}
+  _bulletPrefab: {fileID: 707630094181130176, guid: 08d2f246cfa240642abf268da10151a2,
     type: 3}
-  _maxDelayAfterShot: 0.45
+  _maxDelayAfterShot: 0.4

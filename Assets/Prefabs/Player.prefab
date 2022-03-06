@@ -147,7 +147,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -171,7 +171,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.28, y: 1.28}
-    newSize: {x: 0.64, y: 0.64}
+    newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -282,12 +282,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _imageWeapon: {fileID: 0}
-  _inventoryItems: []
-  _inventoryWeapons:
+  _items: []
+  _weapons:
   - _weapon: {fileID: 11400000, guid: eedb69ebf51b1d844b0c8357803d44a1, type: 2}
+  _weaponsObj:
+  - {fileID: 2091937114}
+  - {fileID: 0}
+  - {fileID: 0}
+  _weaponsRendr:
+  - {fileID: 2091937116}
+  - {fileID: 0}
+  - {fileID: 0}
   OnEquipWeaponEvent:
     m_PersistentCalls:
       m_Calls: []
+  CurrentIndexWeapon: 0
 --- !u!114 &384898057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,9 +389,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 879501d61d2b5884f80fb8a1f23b28cf, type: 3}
+--- !u!1 &2091937114 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4103098042521651856, guid: 879501d61d2b5884f80fb8a1f23b28cf,
+    type: 3}
+  m_PrefabInstance: {fileID: 4103098042866657226}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2091937115 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4103098042521651857, guid: 879501d61d2b5884f80fb8a1f23b28cf,
+    type: 3}
+  m_PrefabInstance: {fileID: 4103098042866657226}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &2091937116 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4103098042521651862, guid: 879501d61d2b5884f80fb8a1f23b28cf,
     type: 3}
   m_PrefabInstance: {fileID: 4103098042866657226}
   m_PrefabAsset: {fileID: 0}
