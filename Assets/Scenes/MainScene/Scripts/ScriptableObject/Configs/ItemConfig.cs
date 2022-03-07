@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New item config", menuName = "Config/Item", order = 51)]
+[CreateAssetMenu(fileName = "Item", menuName = "Config/Item", order = 51)]
 public class ItemConfig : ScriptableObject
 {
     [SerializeField] private string _name;

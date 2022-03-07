@@ -4,13 +4,16 @@ public class ControlOverButtons : MonoBehaviour
 {
     [SerializeField] private GameObject _pickUpButton;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (!_pickUpButton) { return; }
 
         if (collision.gameObject.layer == 6)
         {
-            _pickUpButton.SetActive(true);
+            if (!_pickUpButton.activeInHierarchy)
+            {
+                _pickUpButton.SetActive(true);
+            }
         }
     }
 

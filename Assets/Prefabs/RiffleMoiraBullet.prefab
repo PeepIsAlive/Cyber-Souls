@@ -122,7 +122,7 @@ MonoBehaviour:
   _rigidbody: {fileID: 8583797283733411138}
   _layerMaskTarget:
     serializedVersion: 2
-    m_Bits: 98432
+    m_Bits: 98440
 --- !u!61 &9137179073497156229
 BoxCollider2D:
   m_ObjectHideFlags: 0

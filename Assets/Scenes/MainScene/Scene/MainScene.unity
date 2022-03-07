@@ -557,7 +557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 8342723292264846250}
-  _lerpSpeed: 1
+  _lerpSpeed: 2
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0

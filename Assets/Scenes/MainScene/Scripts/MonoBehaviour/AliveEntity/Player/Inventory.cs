@@ -46,7 +46,7 @@ public class Inventory : MonoBehaviour
     private const int _sizeInventoryWeapons = 3;
     [HideInInspector] public UnityEvent<SpriteRenderer> OnEquipWeaponEvent;
 
-    public int CurrentIndexWeapon;
+    public int CurrentIndexWeapon { get; private set; }
 
     public Inventory(List<InventoryWeaponSlot> weapons) => _weapons = weapons;
     public GameObject this[int index]
@@ -129,8 +129,6 @@ public class Inventory : MonoBehaviour
         {
             _weaponsObj[CurrentIndexWeapon] = weaponObj;
             _weaponsRendr[CurrentIndexWeapon] = renderer;
-
-            Debug.Log($"Current index: {CurrentIndexWeapon}");
 
             OnEquipWeaponEvent?.Invoke(renderer);
             _imageWeapon.sprite = weapon.Sprite;

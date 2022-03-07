@@ -234,7 +234,6 @@ MonoBehaviour:
   _config: {fileID: 11400000, guid: dafe8dc0224040d48a2d124a0125df15, type: 2}
   _moveJoystick: {fileID: 0}
   _shootJoystick: {fileID: 0}
-  _weaponRenderer: {fileID: 0}
   OnPickUpActionEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -296,7 +295,6 @@ MonoBehaviour:
   OnEquipWeaponEvent:
     m_PersistentCalls:
       m_Calls: []
-  CurrentIndexWeapon: 0
 --- !u!114 &384898057
 MonoBehaviour:
   m_ObjectHideFlags: 0

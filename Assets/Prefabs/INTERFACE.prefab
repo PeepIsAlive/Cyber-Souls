@@ -346,6 +346,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShootJoystick
       objectReference: {fileID: 0}
+    - target: {fileID: 5098104872347276090, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+        type: 3}
+      propertyPath: deadZone
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
 --- !u!224 &1206855940436853332 stripped

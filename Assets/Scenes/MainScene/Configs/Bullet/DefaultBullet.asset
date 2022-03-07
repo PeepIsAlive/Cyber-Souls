@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 10
   _critChance: 10
-  _flightSpeed: 8.5
-  _force: 0.5
+  _flightSpeed: 6.5
+  _force: 0

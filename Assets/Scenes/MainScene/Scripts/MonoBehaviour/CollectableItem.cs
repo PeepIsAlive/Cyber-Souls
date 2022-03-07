@@ -3,6 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(CircleCollider2D))]
 public class CollectableItem : MonoBehaviour
 {
+    [SerializeField] private PotionConfig _potion;
     [SerializeField] private ItemConfig _item;
     [SerializeField] private WeaponConfig _weapon;
 
@@ -15,7 +16,7 @@ public class CollectableItem : MonoBehaviour
     private void PickUp()
     {
         if (!_inventory) { return; }
-        if (!_item && !_weapon) return;
+        if (!_item && !_potion && !_weapon) return;
 
         if (_playerInTrigger && _player)
         {
@@ -28,14 +29,14 @@ public class CollectableItem : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (!_playerInTrigger && collision.TryGetComponent<Inventory>(out _inventory))
+        if (!_playerInTrigger && collision.gameObject.CompareTag("Player"))
         {
+            _inventory = PlayerController.Instance.Inventory;
+
             if (!_player)
             {
-                if (collision.TryGetComponent<PlayerController>(out _player))
-                {
-                    _player.OnPickUpActionEvent.AddListener(PickUp);
-                }
+                _player = PlayerController.Instance;
+                _player.OnPickUpActionEvent.AddListener(PickUp);
             }
 
             if (!_playerInTrigger) _playerInTrigger = true;

@@ -18,4 +18,4 @@ MonoBehaviour:
   _prefab: {fileID: 2380775216163550392, guid: fa60a79fc75b4fd4f87f448272837796, type: 3}
   _bulletPrefab: {fileID: 707630094181130176, guid: 08d2f246cfa240642abf268da10151a2,
     type: 3}
-  _maxDelayAfterShot: 0.4
+  _maxDelayAfterShot: 0.5

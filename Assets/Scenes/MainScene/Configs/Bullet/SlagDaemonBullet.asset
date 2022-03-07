@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: SlagDaemonBullet
   m_EditorClassIdentifier: 
   _damage: 15
-  _critChance: 12
-  _flightSpeed: 6
-  _force: 1
+  _critChance: 10
+  _flightSpeed: 7
+  _force: 0.5
