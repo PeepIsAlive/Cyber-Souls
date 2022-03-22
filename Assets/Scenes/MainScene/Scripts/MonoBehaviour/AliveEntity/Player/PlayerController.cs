@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +9,7 @@ public class PlayerController : AliveEntity
     [SerializeField] private Joystick _shootJoystick;
 
     private Rigidbody2D _rigidbody;
+    private Health _health;
     private Animator _animator;
     private Inventory _inventory;
     private SpriteRenderer _weaponRenderer;
@@ -20,6 +20,7 @@ public class PlayerController : AliveEntity
     public Joystick MoveJoystick => _moveJoystick;
     public Joystick ShootJoystick => _shootJoystick;
     public Inventory Inventory => _inventory;
+    public Health Health => _health;
 
     private void Start()
     {
@@ -29,9 +30,12 @@ public class PlayerController : AliveEntity
         DontDestroyOnLoad(gameObject);
 
         _rigidbody = GetComponent<Rigidbody2D>();
+        _health = GetComponent<Health>();
         _animator = GetComponent<Animator>();
         _inventory = GetComponent<Inventory>();
         _weaponRenderer = transform.GetChild(0).GetChild(0).gameObject.GetComponent<SpriteRenderer>();
+
+        _weaponRenderer.sortingOrder = 3;
 
         _inventory.OnEquipWeaponEvent.AddListener(ChangeWeaponRenderer);
     }

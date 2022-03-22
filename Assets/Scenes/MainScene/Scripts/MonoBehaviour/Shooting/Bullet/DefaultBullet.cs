@@ -3,10 +3,12 @@ using UnityEngine;
 public class DefaultBullet : Bullet
 {
     [SerializeField] private Rigidbody2D _rigidbody;
-    [SerializeField] private LayerMask _layerMaskTarget;
+    [SerializeField] private LayerMask _targetsLM;
+    [SerializeField] private ParticleSystem _flightEffect;
 
     private void OnEnable()
     {
+        if (_flightEffect) _flightEffect.Play();
         Move();
     }
 
@@ -24,7 +26,7 @@ public class DefaultBullet : Bullet
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((_layerMaskTarget.value & (1 << collision.gameObject.layer)) != 0)
+        if ((_targetsLM.value & (1 << collision.gameObject.layer)) != 0)
         {
             if (collision.gameObject.TryGetComponent<Health>(out Health health))
             {

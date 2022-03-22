@@ -43,10 +43,11 @@ public class Inventory : MonoBehaviour
     private Transform _dropPointTransform;
 
     private const int _sizeInventoryItems = 3;
+    public int CurrentIndexWeapon = 0;
     private const int _sizeInventoryWeapons = 3;
     [HideInInspector] public UnityEvent<SpriteRenderer> OnEquipWeaponEvent;
 
-    public int CurrentIndexWeapon { get; private set; }
+    //public int CurrentIndexWeapon { get; private set; }
 
     public Inventory(List<InventoryWeaponSlot> weapons) => _weapons = weapons;
     public GameObject this[int index]
@@ -103,7 +104,7 @@ public class Inventory : MonoBehaviour
         {
             _weaponsObj[CurrentIndexWeapon].SetActive(false);
 
-            CurrentIndexWeapon = (CurrentIndexWeapon + 1 > _sizeInventoryWeapons - 1) ? 0 : CurrentIndexWeapon + 1;
+            CurrentIndexWeapon = (CurrentIndexWeapon + 1 > _weapons.Count - 1) ? 0 : CurrentIndexWeapon + 1;
 
             _weaponsObj[CurrentIndexWeapon].SetActive(true);
             OnEquipWeaponEvent?.Invoke(_weaponsRendr[CurrentIndexWeapon]);
@@ -117,6 +118,7 @@ public class Inventory : MonoBehaviour
         SpriteRenderer renderer = weaponObj.GetComponent<SpriteRenderer>();
 
         weaponObj.GetComponent<PlayerWeapon>().Joystick = PlayerController.Instance.ShootJoystick;
+        renderer.sortingOrder = 3;
 
         if (!isReplace)
         {
@@ -137,6 +139,8 @@ public class Inventory : MonoBehaviour
 
     private void DropWeapon(ref WeaponConfig weapon)
     {
+        _weaponsRendr[CurrentIndexWeapon].sortingOrder = 1;
+
         Destroy(_weaponsObj[CurrentIndexWeapon]);
         Instantiate(weapon.Prefab, _dropPointTransform.position, Quaternion.identity);
 

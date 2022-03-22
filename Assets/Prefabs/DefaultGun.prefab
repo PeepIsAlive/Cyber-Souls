@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4103098042521651856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.01, y: -0.133, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4103098043261551922}
@@ -101,6 +101,7 @@ MonoBehaviour:
   _config: {fileID: 11400000, guid: eedb69ebf51b1d844b0c8357803d44a1, type: 2}
   Joystick: {fileID: 0}
   _shootPoint: {fileID: 4103098043261551922}
+  _shootEffect: {fileID: 0}
 --- !u!58 &1306873953
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -116,7 +117,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.75
 --- !u!114 &1306873952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665fcc78e86bada44ad39bf040fbc123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _potion: {fileID: 0}
   _item: {fileID: 0}
   _weapon: {fileID: 11400000, guid: eedb69ebf51b1d844b0c8357803d44a1, type: 2}
 --- !u!1 &4103098043261551933
@@ -140,7 +142,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4103098043261551922}
-  m_Layer: 14
+  m_Layer: 6
   m_Name: ShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +157,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4103098043261551933}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.0578, z: 0}
+  m_LocalPosition: {x: 0.47, y: 0.0577, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4103098042521651857}

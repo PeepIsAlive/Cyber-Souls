@@ -79,6 +79,7 @@ GameObject:
   - component: {fileID: 1350792466}
   - component: {fileID: 2097089106}
   - component: {fileID: 384898057}
+  - component: {fileID: 1256111654}
   m_Layer: 14
   m_Name: Player
   m_TagString: Player
@@ -141,7 +142,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 62a23c78151cf284ab8cfc3d789a90ab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -263,8 +264,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df5c48f986ffe844aa52d94e102f20e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthCount: 100
-  OnTakeHitEvent:
+  _healthCount: 50
+  OnChangeHealthEvent:
     m_PersistentCalls:
       m_Calls: []
   _destroyEffect: {fileID: 0}
@@ -292,6 +293,7 @@ MonoBehaviour:
   - {fileID: 2091937116}
   - {fileID: 0}
   - {fileID: 0}
+  CurrentIndexWeapon: 0
   OnEquipWeaponEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -307,7 +309,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f382dfd3bcc3e34783a2ae9f52c60cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _objectsLM:
+    serializedVersion: 2
+    m_Bits: 64
   _pickUpButton: {fileID: 0}
+--- !u!58 &1256111654
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8342723291169635462}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 9
 --- !u!1001 &4103098042866657226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -378,12 +399,32 @@ PrefabInstance:
     - target: {fileID: 4103098043261551922, guid: 879501d61d2b5884f80fb8a1f23b28cf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.47
+      value: 0.47099996
       objectReference: {fileID: 0}
     - target: {fileID: 4103098043261551922, guid: 879501d61d2b5884f80fb8a1f23b28cf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0577
+      value: 0.035
+      objectReference: {fileID: 0}
+    - target: {fileID: 4103098043261551922, guid: 879501d61d2b5884f80fb8a1f23b28cf,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4103098043261551922, guid: 879501d61d2b5884f80fb8a1f23b28cf,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4103098043261551922, guid: 879501d61d2b5884f80fb8a1f23b28cf,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5419641589858841697, guid: 879501d61d2b5884f80fb8a1f23b28cf,
+        type: 3}
+      propertyPath: _shootEffect
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 879501d61d2b5884f80fb8a1f23b28cf, type: 3}

@@ -2,13 +2,17 @@ using UnityEngine;
 
 public class ControlOverButtons : MonoBehaviour
 {
+    [Header("Areas of objects that can be picked up:")]
+    [SerializeField] private LayerMask _objectsLM;
+
+    [Header("Buttons:")]
     [SerializeField] private GameObject _pickUpButton;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (!_pickUpButton) { return; }
 
-        if (collision.gameObject.layer == 6)
+        if ((_objectsLM.value & (1 << collision.gameObject.layer)) != 0)
         {
             if (!_pickUpButton.activeInHierarchy)
             {
@@ -21,7 +25,7 @@ public class ControlOverButtons : MonoBehaviour
     {
         if (!_pickUpButton) { return; }
 
-        if (collision.gameObject.layer == 6)
+        if ((_objectsLM.value & (1 << collision.gameObject.layer)) != 0)
         {
             _pickUpButton.SetActive(false);
         }

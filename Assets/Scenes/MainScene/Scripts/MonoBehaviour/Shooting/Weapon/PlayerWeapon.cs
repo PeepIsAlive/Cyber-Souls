@@ -7,7 +7,10 @@ public class PlayerWeapon : Weapon
     [SerializeField] private Transform _shootPoint;
     private SpriteRenderer _renderer;
 
-    private float _delayAfterShot = 10f;
+    [Header("VFX:")]
+    [SerializeField] private ParticleSystem _shootEffect;
+
+    private float _delayAfterShot = 50f;
 
     private void OnEnable()
     {
@@ -29,6 +32,7 @@ public class PlayerWeapon : Weapon
         {
             if (_delayAfterShot >= Config.MaxDelayAfterShot)
             {
+                if (_shootEffect) { _shootEffect.Play(); }
                 Instantiate(Config.BulletPrefab, _shootPoint.position, Quaternion.Euler(0, 0, RotateZ));
 
                 _delayAfterShot = 0;
@@ -43,7 +47,7 @@ public class PlayerWeapon : Weapon
         
     }
 
-    protected virtual void Rotate()
+    private void Rotate()
     {
         if (!Joystick || !_renderer) { return; }
 

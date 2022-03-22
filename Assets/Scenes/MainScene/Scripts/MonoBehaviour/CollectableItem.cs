@@ -20,8 +20,9 @@ public class CollectableItem : MonoBehaviour
 
         if (_playerInTrigger && _player)
         {
-            if (_item) _inventory.AddItem(_item);
-            if (_weapon) _inventory.AddWeapon(_weapon);
+            if (_item) { _inventory.AddItem(_item); }
+            if (_potion) { PlayerController.Instance.Health.RestoreHealth(_potion.RestoreCount); }
+            if (_weapon) { _inventory.AddWeapon(_weapon); }
 
             Destroy(gameObject);
         }
